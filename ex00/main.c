@@ -6,13 +6,15 @@
 /*   By: garaujo <garaujo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 18:35:21 by garaujo           #+#    #+#             */
-/*   Updated: 2024/04/21 13:08:20 by garaujo          ###   ########.fr       */
+/*   Updated: 2024/04/21 13:28:47 by garaujo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
+
+#define SHALL_NOT_PASS 0
 
 int	char2int(char digit)
 {
@@ -40,19 +42,24 @@ int	ft_validate_input(char *str, int grid_size) {
    int	input_count;
 
    input_count = 0;
-   if (is_char_equal(*str, ' '));
-   	return 0;
+   if (is_char_equal(*str, ' '))
+   	return (SHALL_NOT_PASS);
 
    while (*str != '\0') {
 	is_next_char_number = is_char_in_range(*(str + 1), '1', int2char(grid_size));
 	if (is_char_equal(*str, ' ') && !is_next_char_number)
-		return 0;
+		return (SHALL_NOT_PASS);
 	else
 	{
 		is_within_range = is_char_in_range(*str, '1', int2char(grid_size));
-		if !(is_within_range && !is_next_char_number)
-			return (0);
-		input_count++;
+		if (is_within_range && !is_next_char_number)
+		{
+			input_count++;	
+		}
+		else
+		{
+			return (SHALL_NOT_PASS);
+		}
    	}
         str++;
     }
