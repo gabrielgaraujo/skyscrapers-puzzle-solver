@@ -6,7 +6,7 @@
 /*   By: garaujo <garaujo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 18:35:21 by garaujo           #+#    #+#             */
-/*   Updated: 2024/04/21 13:45:38 by garaujo          ###   ########.fr       */
+/*   Updated: 2024/04/21 14:54:16 by mabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <stdio.h>
 
 #define SHALL_NOT_PASS 0
+#define END_OF_STRING '\0'
+#define HINT_MULTIPLIER 4
 
 int	char2int(char digit)
 {
@@ -28,12 +30,12 @@ char	int2char(int digit)
 
 int	is_char_in_range(char c, char start, char end)
 {
-	return ((c >= start && c <= end) ? 1 : 0);
+	return (c >= start && c <= end);
 }
 
 int	is_char_equal(char first_char, char second_char)
 {
-	return ((first_char == second_char) ? 1 : 0);
+	return (first_char == second_char);
 }
 
 int	ft_validate_input(char *str, int grid_size) {
@@ -45,7 +47,7 @@ int	ft_validate_input(char *str, int grid_size) {
    if (is_char_equal(*str, ' '))
    	return (SHALL_NOT_PASS);
 
-   while (*str != '\0') {
+   while (*str != END_OF_STRING) {
 	is_next_char_number = is_char_in_range(*(str + 1), '1', int2char(grid_size));
 	if (is_char_equal(*str, ' ') && !is_next_char_number)
 		return (SHALL_NOT_PASS);
@@ -59,7 +61,7 @@ int	ft_validate_input(char *str, int grid_size) {
         str++;
     }
 
-    return (grid_size * grid_size == input_count);
+    return (grid_size * HINT_MULTIPLIER == input_count);
 }
 
 void	ft_print(char *str)
