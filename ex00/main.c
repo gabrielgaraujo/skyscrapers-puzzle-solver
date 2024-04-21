@@ -6,7 +6,7 @@
 /*   By: garaujo <garaujo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 18:35:21 by garaujo           #+#    #+#             */
-/*   Updated: 2024/04/21 13:28:47 by garaujo          ###   ########.fr       */
+/*   Updated: 2024/04/21 13:45:38 by garaujo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,12 @@ int	ft_validate_input(char *str, int grid_size) {
 	is_next_char_number = is_char_in_range(*(str + 1), '1', int2char(grid_size));
 	if (is_char_equal(*str, ' ') && !is_next_char_number)
 		return (SHALL_NOT_PASS);
-	else
+	if (!is_char_equal(*str, ' '))
 	{
 		is_within_range = is_char_in_range(*str, '1', int2char(grid_size));
-		if (is_within_range && !is_next_char_number)
-		{
-			input_count++;	
-		}
-		else
-		{
+		if (!(is_within_range && !is_next_char_number))
 			return (SHALL_NOT_PASS);
-		}
+		input_count++;	
    	}
         str++;
     }
