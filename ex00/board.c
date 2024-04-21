@@ -6,7 +6,7 @@
 /*   By: gonische <gonische@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 14:23:03 by gonische          #+#    #+#             */
-/*   Updated: 2024/04/21 19:45:01 by garaujo          ###   ########.fr       */
+/*   Updated: 2024/04/21 20:06:51 by garaujo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	print_board(const char *board, int board_row_size)
 		else
 			write(1, " ", 1);
 	}
-	write(1, "\n", 1);
 }
 
 char	*get_board_cell(char *board, int board_row_size,
