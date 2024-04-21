@@ -13,16 +13,6 @@
 #include <unistd.h>
 #include "utils.h"
 
-int	char2int(char digit)
-{
-	return (digit - 48);
-}
-
-char	int2char(int digit)
-{
-	return (digit + 48);
-}
-
 int	is_char_in_range(char c, char start, char end)
 {
 	return (c >= start && c <= end);

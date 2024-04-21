@@ -6,7 +6,7 @@
 /*   By: garaujo <garaujo@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:27:26 by garaujo           #+#    #+#             */
-/*   Updated: 2024/04/21 19:59:58 by garaujo          ###   ########.fr       */
+/*   Updated: 2024/04/21 22:43:04 by garaujo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,23 @@
 
 int	is_valid_input(char *str)
 {
-	int	is_within_range;
-	int	is_next_num;
-	int	input_count;
+	int		is_within_range;
+	int		is_next_num;
+	int		input_count;
+	char	tallest_skyscraper;
 
+	tallest_skyscraper = (char)(GRID_SIZE + '0');
 	input_count = 0;
 	if (is_char_equal(*str, ' '))
 		return (SHALL_NOT_PASS);
 	while (*str != END_OF_STRING)
 	{
-		is_next_num = is_char_in_range(*(str + 1), '1', int2char(GRID_SIZE));
+		is_next_num = is_char_in_range(*(str + 1), '1', tallest_skyscraper);
 		if (is_char_equal(*str, ' ') && !is_next_num)
 			return (SHALL_NOT_PASS);
 		if (!is_char_equal(*str, ' '))
 		{
-			is_within_range = is_char_in_range(*str, '1', int2char(GRID_SIZE));
+			is_within_range = is_char_in_range(*str, '1', tallest_skyscraper);
 			if (!(is_within_range && !is_next_num))
 				return (SHALL_NOT_PASS);
 			input_count++;

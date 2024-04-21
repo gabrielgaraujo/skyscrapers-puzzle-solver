@@ -18,8 +18,6 @@
 # define HINT_MULTIPLIER 4
 # define GRID_SIZE 4
 
-int		char2int(char digit);
-char	int2char(int digit);
 int		is_char_in_range(char c, char start, char end);
 int		is_char_equal(char first_char, char second_char);
 void	print(char *str);
