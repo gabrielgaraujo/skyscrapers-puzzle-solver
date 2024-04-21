@@ -6,7 +6,7 @@
 /*   By: garaujo <garaujo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 18:35:21 by garaujo           #+#    #+#             */
-/*   Updated: 2024/04/21 14:54:16 by mabel            ###   ########.fr       */
+/*   Updated: 2024/04/21 15:34:09 by garaujo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,31 +59,30 @@ int	ft_validate_input(char *str, int grid_size) {
 		input_count++;	
    	}
         str++;
-    }
-
-    return (grid_size * HINT_MULTIPLIER == input_count);
+   }
+	return (grid_size * HINT_MULTIPLIER == input_count);
 }
 
 void	ft_print(char *str)
 {
-	int length;
+	int	length;
 
 	length = 0;
-    while (str[length] != '\0')
+	while (str[length] != '\0')
 	{
-        length++;
+		length++;
 	}
-    write(STDOUT_FILENO, str, length);
+	write(STDOUT_FILENO, str, length);
 }
 
 int	ft_hints_length(char *str)
 {
-	int length;
+	int	length;
 
 	length = 0;
-	while(*str)
+	while (*str)
 	{
-		if(*str >= 48 && *str <= 57)
+		if (*str >= 48 && *str <= 57)
 			length++;
 		str++;
 	}
@@ -93,15 +92,8 @@ int	ft_hints_length(char *str)
 int	main(int argc, char **argv)
 {
 	int	grid_size;
-	
+
 	grid_size = 4;
-	// if(argc != 2 || !ft_validate_input(argv[1]))
-	// {
-	// 	ft_print("ERROR: Invalid arguments\n");
-	// 	return (1);
-	// }
-
 	printf("-> %d", ft_validate_input(argv[1], grid_size));
-
 	return (0);
 }
