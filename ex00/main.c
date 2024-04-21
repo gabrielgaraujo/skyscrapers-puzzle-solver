@@ -6,7 +6,7 @@
 /*   By: garaujo <garaujo@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 18:35:21 by garaujo           #+#    #+#             */
-/*   Updated: 2024/04/21 14:54:16 by mabel            ###   ########.fr       */
+/*   Updated: 2024/04/21 15:35:40 by mabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,30 +38,30 @@ int	is_char_equal(char first_char, char second_char)
 	return (first_char == second_char);
 }
 
-int	ft_validate_input(char *str, int grid_size) {
-   int	is_within_range;
-   int	is_next_char_number;
-   int	input_count;
+int	ft_validate_input(char *str, int grid_size)
+{
+	int	is_within_range;
+	int	is_next_num;
+	int	input_count;
 
-   input_count = 0;
-   if (is_char_equal(*str, ' '))
-   	return (SHALL_NOT_PASS);
-
-   while (*str != END_OF_STRING) {
-	is_next_char_number = is_char_in_range(*(str + 1), '1', int2char(grid_size));
-	if (is_char_equal(*str, ' ') && !is_next_char_number)
+	input_count = 0;
+	if (is_char_equal(*str, ' '))
 		return (SHALL_NOT_PASS);
-	if (!is_char_equal(*str, ' '))
+	while (*str != END_OF_STRING)
 	{
-		is_within_range = is_char_in_range(*str, '1', int2char(grid_size));
-		if (!(is_within_range && !is_next_char_number))
+		is_next_num = is_char_in_range(*(str + 1), '1', int2char(grid_size));
+		if (is_char_equal(*str, ' ') && !is_next_num)
 			return (SHALL_NOT_PASS);
-		input_count++;	
-   	}
-        str++;
-    }
-
-    return (grid_size * HINT_MULTIPLIER == input_count);
+		if (!is_char_equal(*str, ' '))
+		{
+			is_within_range = is_char_in_range(*str, '1', int2char(grid_size));
+			if (!(is_within_range && !is_next_num))
+				return (SHALL_NOT_PASS);
+			input_count++;
+		}
+		str++;
+	}
+	return (grid_size * HINT_MULTIPLIER == input_count);
 }
 
 void	ft_print(char *str)
